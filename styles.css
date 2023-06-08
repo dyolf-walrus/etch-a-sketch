@@ -1,0 +1,46 @@
+
+
+#etcher {
+    background-color: rgb(219, 46, 46);
+    height: 550px;
+    width: 700px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#sketcher {
+    background-color: #ffffff;
+    height: 500px;
+    width: 550px;
+    border-radius: 25px;
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#selections {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.error {
+    
+}
+
+.circle {
+    background-color: #ffffff;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    border: 1px solid #d3d1d1;
+    margin: 5px;
+}
+
+.box {
+    background-color: #ffffff;
+    border: 1px solid #d3d1d1;
+}

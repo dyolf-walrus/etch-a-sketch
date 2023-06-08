@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Etch-a-Sketch</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="etcher">
+            <div id="sketcher">
+
+            </div>
+            <div id="selections">
+                <div class="circle"></div>
+                <div>
+                    <label for="size">New Grid Size (16-64):</label>
+                    <input type="number" id="gridSize" name="size" min="16" max="64" defaultValue="16">
+                    <p class="error"></p>
+                    <p><button>Click to Shake!</button></p>
+                </div>
+                <div class="circle"></div>
+            </div>
+        </div>
+    </body>
+    <script src="scripts.js"></script>
+</html>
