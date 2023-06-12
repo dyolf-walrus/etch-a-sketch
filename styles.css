@@ -1,34 +1,40 @@
-
+p {
+    margin: 0px;
+    padding: 0px;
+}
 
 #etcher {
     background-color: rgb(219, 46, 46);
-    height: 550px;
     width: 700px;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin: auto;
 }
 
 #sketcher {
     background-color: #ffffff;
-    height: 500px;
+    height: 400px;
     width: 550px;
     border-radius: 25px;
     margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
 }
 
 #selections {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    padding: 10px;
 }
 
 .error {
-    
+    height: 1.1em;
 }
 
 .circle {
@@ -42,5 +48,8 @@
 
 .box {
     background-color: #ffffff;
-    border: 1px solid #d3d1d1;
+    border: 1px solid #ececec;
+    height: 0px;
+    width: 0px;
+    box-sizing: border-box;
 }

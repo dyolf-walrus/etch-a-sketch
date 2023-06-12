@@ -2,7 +2,32 @@ document.getElementById('gridSize').defaultValue = 16;
 let size = document.getElementById('gridSize').value;
 let error = document.querySelector('.error')
 
+let canvas = document.getElementById('sketcher');
+let canvasWidth = document.getElementById('sketcher').offsetWidth;
+let canvasHeight = document.getElementById('sketcher').offsetHeight;
+
+let boxWidth = canvasWidth / size;
+let boxHeight = canvasHeight / size;
+let boxNum = size * size;
+
+let container = document.getElementById('sketcher');
+
+for (let i = 0; i < 16 * 16; i++) {
+    let box = document.createElement("div");
+    box.classList.add('box');
+    box.style.width = boxWidth + 'px';
+    box.style.height = boxHeight + 'px';
+    box.addEventListener('mouseover', function() {
+        box.style.backgroundColor = '#000000'
+        box.style.borderColor = '#000000'
+    })
+    container.appendChild(box);
+}
+
 function updateSize() {
+    while (canvas.firstChild) {
+        canvas.removeChild(canvas.firstChild);
+    }
     size = document.getElementById('gridSize').value;
     if (size > 64) {
         size = 64;
@@ -12,19 +37,31 @@ function updateSize() {
         size = 16;
         error.textContent = "16x16 is the minimum grid size"
     }
-    console.log(size);
-}
-
-function clearBoxes() {
-
+    if (size >= 16 && size <= 64) {
+        boxWidth = canvasWidth / size;
+        boxHeight = canvasHeight / size;
+        boxNum = size * size;
+        for (let i = 0; i < boxNum; i++) {
+            let box = document.createElement("div");
+            box.classList.add('box');
+            box.style.width = boxWidth + 'px';
+            box.style.height = boxHeight + 'px';
+            box.addEventListener('mouseover', function() {
+                box.style.backgroundColor = '#000000'
+                box.style.borderColor = '#000000'
+            })
+            container.appendChild(box);
+        }
+    }
+    boxWidth = canvasWidth / size;
+    boxHeight = canvasHeight / size;
+    boxNum = size * size;
 }
 
 function shakeEtch() {
     error.textContent = ""
     updateSize();
-    clearBoxes();
 }
 
 const shakeButton = document.querySelector('button')
-
 shakeButton.addEventListener('click', shakeEtch)
