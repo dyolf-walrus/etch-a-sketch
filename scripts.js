@@ -10,6 +10,13 @@ let boxWidth = canvasWidth / size;
 let boxHeight = canvasHeight / size;
 let boxNum = size * size;
 
+let drawColor = '#000000'
+let colorInput = document.getElementById('drawColor');
+colorInput.addEventListener('input', updateColor);
+function updateColor() {
+    drawColor = document.getElementById('drawColor').value;
+}
+
 let container = document.getElementById('sketcher');
 
 for (let i = 0; i < 16 * 16; i++) {
@@ -17,9 +24,9 @@ for (let i = 0; i < 16 * 16; i++) {
     box.classList.add('box');
     box.style.width = boxWidth + 'px';
     box.style.height = boxHeight + 'px';
-    box.addEventListener('mouseover', function() {
-        box.style.backgroundColor = '#000000'
-        box.style.borderColor = '#000000'
+    box.addEventListener('click', function() {
+        box.style.backgroundColor = `${drawColor}`;
+        box.style.borderColor = `${drawColor}`;
     })
     container.appendChild(box);
 }
@@ -46,9 +53,9 @@ function updateSize() {
             box.classList.add('box');
             box.style.width = boxWidth + 'px';
             box.style.height = boxHeight + 'px';
-            box.addEventListener('mouseover', function() {
-                box.style.backgroundColor = '#000000'
-                box.style.borderColor = '#000000'
+            box.addEventListener('click', function() {
+                box.style.backgroundColor = `${drawColor}`;
+                box.style.borderColor = `${drawColor}`;
             })
             container.appendChild(box);
         }
