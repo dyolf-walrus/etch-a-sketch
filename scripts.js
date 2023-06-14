@@ -19,22 +19,36 @@ function updateColor() {
 
 let container = document.getElementById('sketcher');
 
-for (let i = 0; i < 16 * 16; i++) {
+let mouse = false;
+document.addEventListener('mousedown', function() {
+    mouse = true;
+})
+document.addEventListener('mouseup', function() {
+    mouse = false;
+})
+
+function createGrid() {
+    size = document.getElementById('gridSize').value;
+    boxWidth = canvasWidth / size;
+    boxHeight = canvasHeight / size;
+    boxNum = size * size;
+    for (let i = 0; i < boxNum; i++) {
     let box = document.createElement("div");
     box.classList.add('box');
     box.style.width = boxWidth + 'px';
     box.style.height = boxHeight + 'px';
-    box.addEventListener('click', function() {
+    box.addEventListener('mouseover', function() {
+        if (mouse) {
         box.style.backgroundColor = `${drawColor}`;
-        box.style.borderColor = `${drawColor}`;
+        box.style.borderColor = `${drawColor}`;}
     })
     container.appendChild(box);
 }
+}
+
+createGrid();
 
 function updateSize() {
-    while (canvas.firstChild) {
-        canvas.removeChild(canvas.firstChild);
-    }
     size = document.getElementById('gridSize').value;
     if (size > 64) {
         size = 64;
@@ -48,24 +62,14 @@ function updateSize() {
         boxWidth = canvasWidth / size;
         boxHeight = canvasHeight / size;
         boxNum = size * size;
-        for (let i = 0; i < boxNum; i++) {
-            let box = document.createElement("div");
-            box.classList.add('box');
-            box.style.width = boxWidth + 'px';
-            box.style.height = boxHeight + 'px';
-            box.addEventListener('click', function() {
-                box.style.backgroundColor = `${drawColor}`;
-                box.style.borderColor = `${drawColor}`;
-            })
-            container.appendChild(box);
-        }
+        createGrid();
     }
-    boxWidth = canvasWidth / size;
-    boxHeight = canvasHeight / size;
-    boxNum = size * size;
 }
 
 function shakeEtch() {
+    while (canvas.firstChild) {
+        canvas.removeChild(canvas.firstChild);
+    }
     error.textContent = ""
     updateSize();
 }

@@ -52,4 +52,5 @@ p {
     height: 0px;
     width: 0px;
     box-sizing: border-box;
+    user-select: none;
 }
