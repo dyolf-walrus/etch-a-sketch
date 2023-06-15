@@ -10,11 +10,24 @@ let boxWidth = canvasWidth / size;
 let boxHeight = canvasHeight / size;
 let boxNum = size * size;
 
+let colorful = false;
+let getColorful = document.getElementById('colorful')
+getColorful.addEventListener('change', function() {
+    if (colorful) {
+        colorful = false;
+    }
+    else if (!colorful) {
+        colorful = true;
+    }
+})
+
 let drawColor = '#000000'
 let colorInput = document.getElementById('drawColor');
 colorInput.addEventListener('input', updateColor);
 function updateColor() {
     drawColor = document.getElementById('drawColor').value;
+    document.getElementById('colorful').checked = false;
+    colorful = false;
 }
 
 let container = document.getElementById('sketcher');
@@ -37,11 +50,24 @@ function createGrid() {
     box.classList.add('box');
     box.style.width = boxWidth + 'px';
     box.style.height = boxHeight + 'px';
+    function draw() {
+            box.style.backgroundColor = `${drawColor}`;
+            box.style.borderColor = `${drawColor}`;
+            if (colorful) {
+                let r = Math.floor(Math.random() * 256)
+                let g = Math.floor(Math.random() * 256)
+                let b = Math.floor(Math.random() * 256)
+                box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                box.style.borderColor = `rgb(${r}, ${g}, ${b})`;
+            }
+    }
     box.addEventListener('mouseover', function() {
         if (mouse) {
-        box.style.backgroundColor = `${drawColor}`;
-        box.style.borderColor = `${drawColor}`;}
+            draw();
+        }
     })
+    box.addEventListener('click', draw)
+
     container.appendChild(box);
 }
 }

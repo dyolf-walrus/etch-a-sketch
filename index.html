@@ -12,15 +12,23 @@
             </div>
             <div id="selections">
                 <div class="circle"></div>
+                <div id="menu">
                 <div>
-                    <label for="size">New Grid Size (16-64):</label>
+                    <label for="size">Grid Size (16-64):</label>
                     <input type="number" id="gridSize" name="size" min="16" max="64" defaultValue="16">
                     <p class="error"></p>
-                    <p><button>Click to Shake!</button></p>
                 </div>
                 <div>
                     <label for="color">Pick a Color</label>
                     <input type="color" id="drawColor" name="color" defaultValue="#000000">
+                </div>
+                <div>
+                    <label for ="colorful">Make it Colorful?</label>
+                    <input type="checkbox" id="colorful" name="colorful"></input>
+                </div>
+                <div class="shake">
+                    <button>Click to Shake!</button>
+                </div>
                 </div>
                 <div class="circle"></div>
             </div>
