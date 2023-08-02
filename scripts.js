@@ -41,7 +41,6 @@ document.addEventListener('mouseup', function() {
 })
 
 function createGrid() {
-    size = document.getElementById('gridSize').value;
     boxWidth = canvasWidth / size;
     boxHeight = canvasHeight / size;
     boxNum = size * size;
@@ -66,7 +65,7 @@ function createGrid() {
             draw();
         }
     })
-    box.addEventListener('click', draw)
+    box.addEventListener('mousedown', draw)
 
     container.appendChild(box);
 }
@@ -79,7 +78,7 @@ function updateSize() {
     if (size > 64) {
         size = 64;
         error.textContent = "64x64 is the maximum grid size"
-    }
+ }
     if (size < 16) {
         size = 16;
         error.textContent = "16x16 is the minimum grid size"
